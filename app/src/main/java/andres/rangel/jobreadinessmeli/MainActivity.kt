@@ -1,16 +1,19 @@
 package andres.rangel.jobreadinessmeli
 
 import andres.rangel.jobreadinessmeli.databinding.ActivityMainBinding
+import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var adapter: ItemAdapter
     private val viewModel by viewModels<SearchViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +30,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
     }
 
     private fun initRecyclerView(items: List<Item>) {
-        TODO("Not yet implemented")
+        adapter = ItemAdapter(items) { item ->
+            Snackbar.make(binding.root, item.body?.title ?: "Undefined", Snackbar.LENGTH_SHORT).show()
+        }
+        binding.rvItems.adapter = adapter
     }
 
     private fun hideKeyBoard() {
