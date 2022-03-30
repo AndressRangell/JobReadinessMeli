@@ -1,11 +1,44 @@
 package andres.rangel.jobreadinessmeli
 
-import androidx.appcompat.app.AppCompatActivity
+import andres.rangel.jobreadinessmeli.databinding.ActivityMainBinding
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
+
+    private lateinit var binding: ActivityMainBinding
+
+    private val viewModel by viewModels<SearchViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.searchView.setOnQueryTextListener(this)
+
+        viewModel.search.observe(this) {
+            binding.prueba.text = it.toString()
+        }
+
+    }
+
+    private fun hideKeyBoard() {
+        val inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(!query.isNullOrEmpty()){
+            viewModel.getCategory(query.lowercase())
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 }
