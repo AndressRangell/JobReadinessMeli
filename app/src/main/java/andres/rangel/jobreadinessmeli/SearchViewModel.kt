@@ -1,35 +1,47 @@
 package andres.rangel.jobreadinessmeli
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SearchViewModel(): ViewModel() {
 
-    private val className: String = "SearchViewModel"
-
-    private val _search = MutableLiveData<String>()
-    val search: LiveData<String> get() = _search
-
-    private val token = "APP_USR-3424956346656258-032917-c0f09b6f583aa3049f6e9dbff507d7b0-316674397"
+    val itemList = MutableLiveData<List<Item>>()
 
     fun getCategory(query: String){
-        viewModelScope.launch {
-            try{
-                val call = withContext(Dispatchers.IO) {
-                    MeliApi.retrofitService.getCategory(query, token)
-                }
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = MeliApi.retrofitService.getCategory(query)
+            launch {
                 if(call.isSuccessful){
-                    val category = call.body()?.get(0)?.categoryName ?: "Undefined"
-                    _search.postValue(category)
+                    val categoryId = call.body()?.get(0)?.categoryId ?: ""
+                    getHighlights(categoryId)
                 }
-            }catch (exception: Exception){
-                Log.e(className, exception.message.toString())
+            }
+        }
+    }
+
+    private fun getHighlights(categoryId: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = MeliApi.retrofitService.getHighlights("highlights/MLM/category/$categoryId")
+            launch {
+                if(call.isSuccessful){
+                    val idList = call.body() ?: ItemId()
+                    val ids = idList.content.map { it.id }
+                    getItems(ids.toString().replace(Regex("(^\\[|\\]\$)"), ""))
+                }
+            }
+        }
+    }
+
+    private fun getItems(idList: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = MeliApi.retrofitService.getItems(idList)
+            launch {
+                if(call.isSuccessful){
+                    itemList.postValue(call.body())
+                }
             }
         }
     }

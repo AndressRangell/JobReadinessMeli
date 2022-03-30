@@ -20,10 +20,14 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
         binding.searchView.setOnQueryTextListener(this)
 
-        viewModel.search.observe(this) {
-            binding.prueba.text = it.toString()
+        viewModel.itemList.observe(this) {
+            initRecyclerView(it)
         }
 
+    }
+
+    private fun initRecyclerView(items: List<Item>) {
+        TODO("Not yet implemented")
     }
 
     private fun hideKeyBoard() {
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
     override fun onQueryTextSubmit(query: String?): Boolean {
         if(!query.isNullOrEmpty()){
             viewModel.getCategory(query.lowercase())
+            hideKeyBoard()
         }
         return true
     }
