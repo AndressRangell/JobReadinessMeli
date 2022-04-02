@@ -9,7 +9,7 @@ class TokenInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
 
-        val token = "APP_USR-3424956346656258-033013-5fed353f284a43ac95ca8ded1f04c842-316674397"
+        val token = "APP_USR-3424956346656258-040122-354f74fa83aa1b7730286e09d559ef47-316674397"
         //rewrite the request to add bearer token
         val newRequest: Request = chain.request().newBuilder()
             .header("Authorization", "Bearer $token")

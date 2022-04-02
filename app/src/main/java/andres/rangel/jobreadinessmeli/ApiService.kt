@@ -8,10 +8,8 @@ import retrofit2.http.*
 
 private const val BASE_URL = "https://api.mercadolibre.com/"
 
-val interceptor = TokenInterceptor()
-
 val client: OkHttpClient = OkHttpClient.Builder()
-    .addInterceptor(interceptor).build();
+    .addInterceptor(TokenInterceptor()).build();
 
 val retrofit: Retrofit = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())

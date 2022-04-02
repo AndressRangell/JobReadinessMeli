@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
@@ -31,7 +32,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
 
     private fun initRecyclerView(items: List<Item>) {
         adapter = ItemAdapter(items) { item ->
-            Snackbar.make(binding.root, item.body?.title ?: "Undefined", Snackbar.LENGTH_SHORT).show()
+            val intentDetail = Intent(this, ProductDetailsActivity::class.java)
+            intentDetail.putExtra("item", Gson().toJson(item))
+            startActivity(intentDetail)
         }
         binding.rvItems.adapter = adapter
     }
