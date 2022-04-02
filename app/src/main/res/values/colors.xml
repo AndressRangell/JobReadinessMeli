@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFE500</color>
     <color name="background">#F2F2F2</color>
-    <color name="slider">#7E7E7E</color>
+    <color name="slider">#AFAFAF</color>
+    <color name="button_background">#3483FA</color>
 </resources>

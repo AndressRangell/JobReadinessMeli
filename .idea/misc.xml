@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../.gradle/caches/transforms-3/27f3f46147c093d5ad8ef0f608151c13/transformed/ImageSlideshow-0.1.0/res/drawable/default_selected_dot.xml" value="0.1215" />
+        <entry key="app/src/main/res/drawable/button_background.xml" value="0.2115" />
+        <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/ic_favorite_border.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_menu.xml" value="0.2115" />
