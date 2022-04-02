@@ -22,6 +22,7 @@ data class Item (
 )
 
 data class ItemBody(
+    var id: String? = null,
     var title: String? = null,
     var price: Double? = null,
     var attributes: ArrayList<Detail> = arrayListOf(),
@@ -46,4 +47,9 @@ data class Name(
 
 data class ItemPictures (
     var url: String? = null
+)
+
+data class Description(
+    @SerializedName("plain_text")
+    var description: String? = null
 )

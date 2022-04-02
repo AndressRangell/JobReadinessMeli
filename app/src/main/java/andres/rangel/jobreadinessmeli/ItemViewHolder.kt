@@ -4,7 +4,7 @@ import andres.rangel.jobreadinessmeli.databinding.ItemProductBinding
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 
 class ItemViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -22,7 +22,7 @@ class ItemViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.tvDetails.text = "Brand: $brand - $condition"
         binding.tvUbication.text = "$country, $city"
 
-        Glide.with(itemView.context).load(item.body?.pictures?.get(0)?.url).into(binding.ivPicture)
+        Picasso.get().load(item.body?.pictures?.get(0)?.url).into(binding.ivPicture)
 
         itemView.setOnClickListener{
             onClickListener(item)

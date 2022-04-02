@@ -34,6 +34,11 @@ interface ApiService {
         @Query("ids") query: String
     ): Response<List<Item>>
 
+    @GET("items/{query}/description")
+    suspend fun getDetail(
+        @Path("query") query: String
+    ): Response<Description>
+
 }
 
 object MeliApi {

@@ -13,8 +13,7 @@ class ItemAdapter(private val items: List<Item>, private val onClickListener: (I
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = items[position]
-        holder.bind(item, onClickListener)
+        holder.bind(items[position], onClickListener)
     }
 
     override fun getItemCount() = items.size
