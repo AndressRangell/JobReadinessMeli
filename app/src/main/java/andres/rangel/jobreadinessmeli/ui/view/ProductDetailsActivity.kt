@@ -30,7 +30,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         // get the json and convert to Item
         val item = Gson().fromJson(intent.getStringExtra("item"), Item::class.java)
 
-        item.body?.id?.changeStateFavorite(binding)
+        item.body?.id?.changeStateFavorite(binding, this)
 
         val list = item.body?.pictures?.map { picture ->
             SlideModel(picture.url)
@@ -44,7 +44,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                 "${item.body?.location?.country?.name} - ${item.body?.location?.city?.name}"
 
             ivFavorite.setOnClickListener {
-                item.body?.id?.addFavorite(binding)
+                item.body?.id?.addFavorite(binding, applicationContext)
                 Log.i(className, "product added or removed to the favorites list")
             }
             ivBack.setOnClickListener { finish() }
