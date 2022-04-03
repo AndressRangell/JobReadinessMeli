@@ -1,21 +1,24 @@
-package andres.rangel.jobreadinessmeli
+package andres.rangel.jobreadinessmeli.ui.view
 
+import andres.rangel.jobreadinessmeli.data.model.Item
+import andres.rangel.jobreadinessmeli.adapter.ItemAdapter
+import andres.rangel.jobreadinessmeli.ui.viewmodel.SearchViewModel
 import andres.rangel.jobreadinessmeli.databinding.ActivityMainBinding
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 
-class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ItemAdapter
     private val viewModel by viewModels<SearchViewModel>()
+    private val className = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
             intentDetail.putExtra("item", Gson().toJson(item))
             startActivity(intentDetail)
         }
+        Log.i(className, "Updated product list")
         binding.rvItems.adapter = adapter
     }
 
@@ -45,8 +49,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener{
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if(!query.isNullOrEmpty()){
-            viewModel.getCategory(query.lowercase())
+        if (!query.isNullOrEmpty()) {
+            viewModel.getCategory(query.lowercase(), binding)
+            Log.i(className, "search sent with the query $query")
             hideKeyBoard()
         }
         return true

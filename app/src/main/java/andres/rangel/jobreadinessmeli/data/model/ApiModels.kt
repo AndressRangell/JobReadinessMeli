@@ -1,23 +1,27 @@
-package andres.rangel.jobreadinessmeli
+package andres.rangel.jobreadinessmeli.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Category (
+// Model category predictor
+data class Category(
     @SerializedName("category_id")
     var categoryId: String,
     @SerializedName("category_name")
     var categoryName: String
 )
 
+// Models top 20 Highlight
 data class ItemId(
     var content: ArrayList<DataId> = arrayListOf()
 )
 
 data class DataId(
-    var id: String
+    var id: String,
+    var type: String
 )
 
-data class Item (
+// Models product details
+data class Item(
     var body: ItemBody? = ItemBody()
 )
 
@@ -31,12 +35,12 @@ data class ItemBody(
     var pictures: ArrayList<ItemPictures> = arrayListOf()
 )
 
-data class Detail (
+data class Detail(
     @SerializedName("value_name")
     var valueName: String? = null
 )
 
-data class Address (
+data class Address(
     var city: Name? = Name(),
     var country: Name? = Name()
 )
@@ -45,7 +49,7 @@ data class Name(
     var name: String? = null
 )
 
-data class ItemPictures (
+data class ItemPictures(
     var url: String? = null
 )
 

@@ -1,5 +1,9 @@
-package andres.rangel.jobreadinessmeli
+package andres.rangel.jobreadinessmeli.data.network
 
+import andres.rangel.jobreadinessmeli.data.model.Category
+import andres.rangel.jobreadinessmeli.data.model.Description
+import andres.rangel.jobreadinessmeli.data.model.Item
+import andres.rangel.jobreadinessmeli.data.model.ItemId
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -42,7 +46,7 @@ interface ApiService {
 }
 
 object MeliApi {
-    val retrofitService : ApiService by lazy {
+    val retrofitService: ApiService by lazy {
         retrofit.create(ApiService::class.java)
     }
 }

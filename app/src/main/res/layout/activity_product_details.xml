@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductDetailsActivity">
+    tools:context=".ui.view.ProductDetailsActivity">
 
     <LinearLayout
         android:id="@+id/linearHeader"
@@ -24,12 +24,11 @@
             android:src="@drawable/ic_back"
             android:layout_weight="0.1"/>
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginHorizontal="10dp"
-            android:background="@drawable/search_background"
+            android:background="@color/yellow"
             android:layout_weight="0.8"/>
 
         <ImageView
@@ -72,15 +71,23 @@
                 android:id="@+id/tvTitleDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvLocationDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
                 android:layout_height="275dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 app:iss_corner_radius="5"
                 app:iss_delay="0"
                 app:iss_error_image="@android:color/darker_gray"

@@ -1,10 +1,12 @@
-package andres.rangel.jobreadinessmeli
+package andres.rangel.jobreadinessmeli.adapter
 
+import andres.rangel.jobreadinessmeli.data.model.Item
+import andres.rangel.jobreadinessmeli.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemAdapter(private val items: List<Item>, private val onClickListener: (Item) -> Unit):
+class ItemAdapter(private val items: List<Item>, private val onClickListener: (Item) -> Unit) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
