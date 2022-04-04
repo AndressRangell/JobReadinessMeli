@@ -31,6 +31,14 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             initRecyclerView(it)
         }
 
+        binding.ivMenu.setOnClickListener {
+            AlertToken().showAlertToken(this)
+        }
+
+        binding.ivFavorites.setOnClickListener {
+
+        }
+
     }
 
     private fun initRecyclerView(items: List<Item>) {

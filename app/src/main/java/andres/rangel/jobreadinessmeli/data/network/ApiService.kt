@@ -1,9 +1,6 @@
 package andres.rangel.jobreadinessmeli.data.network
 
-import andres.rangel.jobreadinessmeli.data.model.Category
-import andres.rangel.jobreadinessmeli.data.model.Description
-import andres.rangel.jobreadinessmeli.data.model.Item
-import andres.rangel.jobreadinessmeli.data.model.ItemId
+import andres.rangel.jobreadinessmeli.data.model.*
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -18,6 +15,11 @@ val client: OkHttpClient = OkHttpClient.Builder()
 val retrofit: Retrofit = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .client(client)
+    .baseUrl(BASE_URL)
+    .build()
+
+val retrofitToken: Retrofit = Retrofit.Builder()
+    .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
 
@@ -43,10 +45,22 @@ interface ApiService {
         @Path("query") query: String
     ): Response<Description>
 
+    @POST("oauth/token?")
+    suspend fun getToken(
+        @Query("grant_type") grantType: String,
+        @Query("client_id") clientId: String,
+        @Query("client_secret") clientSecret: String,
+        @Query("code") code: String,
+        @Query("redirect_uri") redirectUri: String
+    ): Response<Token>
+
 }
 
 object MeliApi {
     val retrofitService: ApiService by lazy {
         retrofit.create(ApiService::class.java)
+    }
+    val token: ApiService by lazy {
+        retrofitToken.create(ApiService::class.java)
     }
 }

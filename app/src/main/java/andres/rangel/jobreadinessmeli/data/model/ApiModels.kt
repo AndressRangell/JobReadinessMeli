@@ -57,3 +57,9 @@ data class Description(
     @SerializedName("plain_text")
     var description: String? = null
 )
+
+// Model access token
+data class Token(
+    @SerializedName("access_token")
+    var token: String
+)

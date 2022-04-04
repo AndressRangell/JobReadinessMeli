@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/drawable/separator.xml" value="0.2115" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/activity_product_details.xml" value="0.3458333333333333" />
+        <entry key="app/src/main/res/layout/alert_token.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.33" />
         <entry key="app/src/main/res/layout/slider_item.xml" value="0.3458333333333333" />
       </map>
