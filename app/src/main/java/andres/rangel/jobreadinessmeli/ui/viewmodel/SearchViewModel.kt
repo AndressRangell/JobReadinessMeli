@@ -62,7 +62,7 @@ class SearchViewModel() : ViewModel() {
         }
     }
 
-    private fun getItems(idList: String) {
+    fun getItems(idList: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = MeliApi.retrofitService.getItems(idList)
             launch {

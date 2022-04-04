@@ -23,9 +23,9 @@ class AlertToken {
             val token = binding.etToken.text.toString()
             if (token.length == 37 && token.contains("TG-"))
                 TokenInterceptor().getToken(token) {
-                    if(it){
+                    if (it) {
                         dialog.dismiss()
-                    }else{
+                    } else {
                         Snackbar.make(
                             binding.root,
                             binding.root.context.getString(R.string.error_getting_token),

@@ -39,7 +39,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         binding.apply {
             list?.let { imageSlider.setImageList(it, ScaleTypes.CENTER_INSIDE) }
             tvTitleDetail.text = item.body?.title ?: ""
-            tvPriceDetail.text = item.body?.price.toString()
+            tvPriceDetail.text = "$ ${item.body?.price.toString()}"
             tvLocationDetail.text =
                 "${item.body?.location?.country?.name} - ${item.body?.location?.city?.name}"
 

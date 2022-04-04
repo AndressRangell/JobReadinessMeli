@@ -1,10 +1,6 @@
 package andres.rangel.jobreadinessmeli.data.network
 
-import andres.rangel.jobreadinessmeli.R
-import andres.rangel.jobreadinessmeli.databinding.AlertTokenBinding
 import android.util.Log
-import androidx.annotation.NonNull
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,6 +26,7 @@ class TokenInterceptor : Interceptor {
         return chain.proceed(newRequest)
     }
 
+    // POST request to get a token
     fun getToken(code: String, answer: (Boolean) -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             val call = MeliApi.token.getToken(grantType, clientId, clientSecret, code, redirectUri)
@@ -38,7 +35,7 @@ class TokenInterceptor : Interceptor {
                     Log.i(className, "successful request to get token")
                     TokenInterceptor.code = call.body()?.token.toString()
                     answer(true)
-                } else{
+                } else {
                     answer(false)
                 }
             }
@@ -46,7 +43,7 @@ class TokenInterceptor : Interceptor {
     }
 
     companion object {
-        var code = "APP_USR-3424956346656258-040302-9f473ab2da36201ecec29c4bd313398f-316674397"
+        var code = "APP_USR-3424956346656258-040418-e791319972f0be26a6150d52713227d4-316674397"
     }
 
 }

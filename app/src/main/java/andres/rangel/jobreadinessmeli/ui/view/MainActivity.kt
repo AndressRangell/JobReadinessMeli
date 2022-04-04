@@ -4,6 +4,7 @@ import andres.rangel.jobreadinessmeli.data.model.Item
 import andres.rangel.jobreadinessmeli.adapter.ItemAdapter
 import andres.rangel.jobreadinessmeli.ui.viewmodel.SearchViewModel
 import andres.rangel.jobreadinessmeli.databinding.ActivityMainBinding
+import andres.rangel.jobreadinessmeli.utils.getFavorites
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
 
         binding.ivFavorites.setOnClickListener {
-
+            viewModel.getItems(this.getFavorites())
         }
 
     }
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         binding.rvItems.adapter = adapter
     }
 
+    // Close the keyboard when pressing enter
     private fun hideKeyBoard() {
         val inputManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
