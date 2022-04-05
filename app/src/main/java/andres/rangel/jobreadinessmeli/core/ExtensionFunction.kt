@@ -1,9 +1,7 @@
-package andres.rangel.jobreadinessmeli.utils
+package andres.rangel.jobreadinessmeli.core
 
 import andres.rangel.jobreadinessmeli.R
-import andres.rangel.jobreadinessmeli.databinding.ActivityMainBinding
 import andres.rangel.jobreadinessmeli.databinding.ActivityProductDetailsBinding
-import andres.rangel.jobreadinessmeli.ui.viewmodel.SearchViewModel
 import android.content.Context
 import android.content.SharedPreferences
 

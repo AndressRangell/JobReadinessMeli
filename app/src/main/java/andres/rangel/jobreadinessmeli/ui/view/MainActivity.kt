@@ -1,10 +1,10 @@
 package andres.rangel.jobreadinessmeli.ui.view
 
 import andres.rangel.jobreadinessmeli.data.model.Item
-import andres.rangel.jobreadinessmeli.adapter.ItemAdapter
+import andres.rangel.jobreadinessmeli.core.adapter.ItemAdapter
 import andres.rangel.jobreadinessmeli.ui.viewmodel.SearchViewModel
 import andres.rangel.jobreadinessmeli.databinding.ActivityMainBinding
-import andres.rangel.jobreadinessmeli.utils.getFavorites
+import andres.rangel.jobreadinessmeli.core.getFavorites
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log

@@ -3,8 +3,8 @@ package andres.rangel.jobreadinessmeli.ui.view
 import andres.rangel.jobreadinessmeli.data.model.Item
 import andres.rangel.jobreadinessmeli.databinding.ActivityProductDetailsBinding
 import andres.rangel.jobreadinessmeli.ui.viewmodel.DetailsViewModel
-import andres.rangel.jobreadinessmeli.utils.addFavorite
-import andres.rangel.jobreadinessmeli.utils.changeStateFavorite
+import andres.rangel.jobreadinessmeli.core.addFavorite
+import andres.rangel.jobreadinessmeli.core.changeStateFavorite
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log

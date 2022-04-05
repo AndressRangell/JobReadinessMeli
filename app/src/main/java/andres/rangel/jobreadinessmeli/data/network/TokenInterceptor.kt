@@ -43,7 +43,7 @@ class TokenInterceptor : Interceptor {
     }
 
     companion object {
-        var code = "APP_USR-3424956346656258-040418-e791319972f0be26a6150d52713227d4-316674397"
+        var code = "APP_USR-3424956346656258-040517-5009c0ec0d5b7272413cf87aabdeb1d2-316674397"
     }
 
 }

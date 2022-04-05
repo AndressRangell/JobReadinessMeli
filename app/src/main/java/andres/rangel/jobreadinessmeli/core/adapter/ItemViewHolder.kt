@@ -1,4 +1,4 @@
-package andres.rangel.jobreadinessmeli.adapter
+package andres.rangel.jobreadinessmeli.core.adapter
 
 import andres.rangel.jobreadinessmeli.data.model.Item
 import andres.rangel.jobreadinessmeli.databinding.ItemProductBinding
